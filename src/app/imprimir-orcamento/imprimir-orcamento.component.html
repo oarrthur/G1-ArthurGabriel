@@ -1,0 +1,26 @@
+<h1>Imprimir orçamento</h1>
+<div *ngIf="orcamento">
+  <h3>Dados do contato</h3>
+  <div>Nome: {{orcamento.nome}}</div>
+  <div>E-mail: {{orcamento.email}}</div>
+  <h3>Peças de mobília</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Tipo da mobília</th>
+        <th>Tipo do puxador</th>
+        <th>Tipo da pintura</th>
+        <th>Área total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let peca of orcamento.pecas">
+        <td>{{peca.tipo}}</td>
+        <td>{{peca.puxador}}</td>
+        <td>{{peca.pintura}}</td>
+        <td>{{peca.area_total}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Custo total: R$ {{orcamento.custo_total}}</h2>
+</div>

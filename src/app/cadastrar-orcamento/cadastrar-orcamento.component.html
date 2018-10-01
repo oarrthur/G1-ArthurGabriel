@@ -1,0 +1,69 @@
+<div align="center">
+<h1>Orçamentos</h1>
+<hr>
+<div *ngIf="mostrar_mensagem">
+  Orçamento cadastrado com sucesso!
+</div>
+<form #cadastro="ngForm" (submit)="salvar()">
+  <div>
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+  </div>
+  <div>
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" [(ngModel)]="email" required>
+  </div>
+  <h3>Peças de mobília</h3>
+  <hr>
+  <div>
+    <label for="tipo">Tipo</label>
+    <select id="tipo" name="tipo" [(ngModel)]="mobilia_tipo" required>
+      <option>compartimento de armário</option>
+      <option>gaveteiro</option>
+    </select>
+  </div>
+  <div>
+    <label for="puxador">Puxador</label>
+    <select id="puxador" name="puxador" [(ngModel)]="mobilia_puxador" required>
+      <option>plástico</option>
+      <option>metal</option>
+    </select>
+  </div>
+  <div>
+    <label for="pintura">Pintura</label>
+    <select id="pintura" name="pintura" [(ngModel)]="mobilia_pintura" required>
+      <option>acabamento PU</option>
+      <option>acabamento PU texturizado</option>
+      <option>laqueado</option>
+    </select>
+  </div>
+  <div>
+    <label for="largura">Largura</label>
+    <input type="number" id="largura" name="largura" [(ngModel)]="mobilia_largura" required>
+  </div>
+  <div>
+    <label for="altura">Altura</label>
+    <input type="number" id="altura" name="altura" [(ngModel)]="mobilia_altura" required>
+  </div>
+  <div>
+    <label for="profundidade">Profundidade</label>
+    <input type="number" id="profundidade" name="profundidade" [(ngModel)]="mobilia_profundidade" required>
+  </div>
+  <button type="button" (click)="adicionarMobilia()">Adicionar</button>
+  <h3>Peças de mobília já adicionadas</h3>
+  <hr>
+  <ul>
+    <li *ngFor="let mobilia of mobilias">
+      {{mobilia.tipo}} - {{mobilia.largura}}cm
+      <button type="button" (click)="removerMobilia(mobilia)" value="remover">Remover</button>
+    </li>
+  </ul>
+  <h3>Total do orçamento</h3>
+  <hr>
+  <div *ngIf="total_orcamento">
+    {{total_orcamento}}
+  </div>
+  <button type="button" (click)="mostrar_total()">Calcular</button> 
+  <button>Salvar</button>
+</form>
+</div>
